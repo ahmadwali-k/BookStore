@@ -67,10 +67,35 @@ public class Options {
     }
     
     static void loggedIn(UserAccount userAcc) {
-        // TODO: put categories here
-        System.out.println(
-            "Browsing by categories:"
-        );
+        int temp;
+        boolean loop = false;
+        do {
+            // TODO: put categories here
+            System.out.println(
+                "Browsing by categories:\n"+
+                "1 \n"+
+                ""
+            );
+            try {
+                temp = DaoFactory.getScanner().nextInt();
+                switch(temp) {
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    default:
+                        break;
+                }
+            } catch (NumberFormatException e) {
+                //TODO: handle exception
+                loop = true;
+            }
+            
+        } while (loop);
+
+        
+
+        
     }
     
     void printReceipt(ArrayList<Book> cart) {
