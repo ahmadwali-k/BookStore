@@ -63,14 +63,30 @@ public class UserAccountManager {
             DaoFactory.getPreparedStatement("select * from ?;").setString(1, Main.bookTableName);
             ResultSet rs = DaoFactory.getPreparedStatement().executeQuery();
             while(rs.next()) {
-                // TODO: 
+                if(rs.getString(1).equals(username)) {
+                    UserAccount acc = new UserAccount();
+                    acc.setUsername(rs.getString(1));
+                    acc.setPassword(rs.getString(2));
+                    return acc;
+                }
             }
         } catch (SQLException e) {
             System.out.print("SQLException in UserAccountManager.findAccount: ");
             e.printStackTrace();
         }
-        
-        // TODO: return the UserAccount;
-        return new UserAccount();
+        return null;
+    }
+    protected static void addAccount(UserAccount acc) {
+            DaoFactory.getPreparedStatement("insert into ? values(\"?\",\"?\");");
+        try {
+            DaoFactory.getPreparedStatement().setString(1, Main.userAccountTableName);
+            DaoFactory.getPreparedStatement().setString(2, acc.getUsername());
+            DaoFactory.getPreparedStatement().setString(3, acc.getPassword());
+            DaoFactory.getPreparedStatement().executeQuery();
+            System.out.println("Account created");
+        } catch (SQLException e) {
+            System.out.print("SQLException in UserAccountManager.addAccount: ");
+            e.printStackTrace();
+        }
     }
 }
