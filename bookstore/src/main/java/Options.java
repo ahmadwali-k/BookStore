@@ -23,7 +23,7 @@ public class Options {
                     break;
                 case 2: register(); loggingIn(); loop = false;
                     break;
-                case 3: return; // TODO: change if needed
+                case 3: return;
                     // break;
                 default:
                     System.out.println("Invalid number");
@@ -40,20 +40,30 @@ public class Options {
         System.out.print("Password (not hidden): ");
         String password = DaoFactory.getScanner().next();
         UserAccount temp = UserAccountManager.findAccount(username);
-        if(temp.getPassword().equals(password)) {
-            loggedIn(temp);
+        if(temp!=null) {
+            System.out.println("Username not found");
+            if(temp.getPassword().equals(password)) {
+                loggedIn(temp);
+            }
         }
+
     }
     
     static void register() {
         UserAccount userAcc = new UserAccount();
         System.out.print("Create a username: ");
         String username = DaoFactory.getScanner().next();
-        System.out.print("Create a password: ");
-        String password = DaoFactory.getScanner().next();
-        userAcc.setUsername(username);
-        userAcc.setPassword(password);
-        // TODO: add the account to the database, and list if we're using that
+        if(UserAccountManager.findAccount(username)==null) {
+            System.out.print("Create a password: ");
+            String password = DaoFactory.getScanner().next();
+            userAcc.setUsername(username);
+            userAcc.setPassword(password);
+            UserAccountManager.addAccount(userAcc);
+        }
+        else {
+            System.out.println("Username is already taken");
+        }
+
     }
     
     static void loggedIn(UserAccount userAcc) {
