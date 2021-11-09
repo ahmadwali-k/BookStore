@@ -29,7 +29,7 @@ class UserAccount {
         return cart;
     }
 
-    void addToCart(Book book) {
+    void addToCartNew(Book book) {
         cart.add(book);
     }
     Book getBook(String isbn) {
@@ -57,7 +57,7 @@ class UserAccount {
     }
 }
 
-public class UserAccountManager {
+/*public class UserAccountManager {
     protected static UserAccount findAccount(String username) {
         try {
             DaoFactory.getPreparedStatement("select * from ?;").setString(1, Main.bookTableName);
@@ -73,4 +73,4 @@ public class UserAccountManager {
         // TODO: return the UserAccount;
         return new UserAccount();
     }
-}
+}*/

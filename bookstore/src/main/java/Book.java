@@ -5,31 +5,26 @@ public class Book {
     private double price;
     public String category;
     public String description;
-    public String name;
+    /*public String name;
     private int id;
-    private String password;
+    private String password;*/
 
     public Book() {
 
-    }
-    public Book (String name, int id, String password) {
-        this.name = name;
-        this.id = id;
-        this.password = password;
     }
 
     public Book(String title, int bookId, String author, double price,
                 String category, String description)
     {
-        this.isbn = bookId;
         this.title = title;
+        this.isbn = bookId;
         this.author = author;
         this.price = price;
         this.category = category;
         this.description = description;
     }
 
-    public int getId() {
+    /*public int getId() {
         return id;
     }
 
@@ -41,9 +36,9 @@ public class Book {
         this.id = id;
     }
 
-    public void setPassword(String password) {
+    //public void setPassword(String password) {
         this.password = password;
-    }
+    }*/
 
     public void setTitle(String title) {
         this.title = title;
@@ -80,4 +75,18 @@ public class Book {
     }
 
 
+    @Override
+    public String toString() {
+
+
+        return "Book ==> |" +
+                "Title = " + title + '\'' +
+                "| |ISBN = '" + isbn + '\'' +
+                "| |Author = '" + author + '\'' +
+                "| |Price = '" + price + '\'' +
+                "| |Category = '" + category + '\'' +
+                "| |Description = '" + description + '\'' +
+                '|' + "\n";
+
+    }
 }
